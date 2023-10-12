@@ -7,9 +7,7 @@
     <img src="images/error404.png" alt="Logo" width="200" height="200">
   </a>
 
-  <font size=6, color=red>Streamable Implicit Neural Representation</font>
-
-
+ <p align="center"> <font size=6, color=red>Streamable Implicit Neural Representation</font> </p>
 
   <p align="center">
     The streamable implicit neural representation models for image compression.
@@ -59,6 +57,7 @@ This is an example of how you may give instructions on setting up your project l
    ```
 
 **Dataset :**
+
 The `'data/'` directory must be in your working directory.
 
 - Download CelebA dataset from [http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
