@@ -3,7 +3,8 @@ import torch
 import numpy as np
 import time
 from torch import nn
-from eval import *
+from metrics import *
+from utils import *
 from collections import OrderedDict
 from torchmeta.modules import MetaModule
 from torch.nn.parameter import Parameter
@@ -253,28 +254,7 @@ def init_weight(W, w0=30., is_first=False):
     nn.init.uniform_(W, -u, u)
 
 """ 初始化偏置 """
-def init_bias(B, w0=1.):
+def init_bias(B, w0=1.0):
     fan_in = B.shape[0]
     u = 1 / np.sqrt(fan_in) / w0
     nn.init.uniform_(B, -u, u)
-    
-
-## w ~ U(√(6/n), -√(6/n)) B = √(6/n)    
-
-## n = 60   B = √(1/10) = 0.3   myB = 1 / 0.3 log(0.3 / )
-
-## 1/B log(B / min(B, B)) = 0
-## 1/B log()
-
-## n = 60  B = 0.3   
-## 60  -   12           log(60)√60 = 15     13.77
-## 50  -   10           2√50 = 14           12
-## 30  -                2√30 = 10
-
-## √(6/n) / log(n)√(nh) = √(6)*√(/logn) / n
-## x ~ [-1, 1]  w ~ [-B, B]  计算 wx+b 其中 w 和 b 越小，结果越小。
-## 当宽度 n 越大，需要更大的值约束 B，使 wx+b稳定在一个范围。
-
-#  B =                      while depth < min_depth
-
-# 宽度深度越大

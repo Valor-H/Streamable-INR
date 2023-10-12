@@ -7,9 +7,9 @@ from tqdm.autonotebook import tqdm
 from dataset import Dataset
 from network import SW, SWD
 from maml import MAML 
-from eval import *
+from metrics import *
+from utils import *
 from quantation import Quentizer
-from get_res import get_res
 
 class ImageTrainer():
     def __init__(self, args):
