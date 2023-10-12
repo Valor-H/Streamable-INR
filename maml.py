@@ -42,7 +42,7 @@ class MAML(MetaModule):
             final_feature = self.net(coord, params=fast_params)
         final_loss = cal_loss(feature, final_feature)
         final_psnr = cal_psnr(final_loss)
-        if (not step % self.args.logs_inter or step == self.save_idx):    #### 
+        if (not step % self.args.logs_inter or step == self.save_idx):
             all_imgs.append(final_feature)
             all_imgs.append(feature)
             all_psnrs.append(final_psnr.item())

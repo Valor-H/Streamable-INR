@@ -15,12 +15,12 @@ def plot_img(imgs, psnrs, H, W, imgs_path, img_name):
     for i in range(1, img_num-1):
         ax_titles.append(f"Step {i}: ")
     ax_titles.append('Ground True')
-    for i, img in enumerate(imgs[:-1]):                 ## 写了前4张
+    for i, img in enumerate(imgs[:-1]):
         axes[i].set_axis_off()
         img = np.clip(img.view(H, W, 3).detach().cpu().numpy(), 0., 1.)
         axes[i].imshow(img)
         axes[i].set_title(ax_titles[i]+f"{psnrs[i]: .4f}", fontsize=20)
-    imgs[-1] = np.clip(imgs[-1].view(H, W, 3).detach().cpu().numpy(), 0., 1.)   ## 添加最后一张
+    imgs[-1] = np.clip(imgs[-1].view(H, W, 3).detach().cpu().numpy(), 0., 1.)
     axes[-1].set_axis_off()
     axes[-1].imshow(imgs[-1])
     axes[-1].set_title(ax_titles[-1], fontsize=20)
@@ -33,8 +33,6 @@ def plot_nums(param_list, bins=80, title='demo.jpg', y_label="stage 1"):
     _, axes = plt.subplots(1, len(param_list), figsize=(20, 3))
     xlim = [1e-2, 4e-1, 6e-1]
     ylim = [2e1, 8e5, 6e4]
-    # plt.rcParams['font.size'] = '20'
-    # plt.tick_params(labelsize=20)
     for i, param in enumerate(param_list):
         print("here is i: ", i)
         axes[i].set_xlim([-xlim[i], xlim[i]])

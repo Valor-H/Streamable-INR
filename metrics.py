@@ -76,7 +76,7 @@ def cal_ssim(feature, feature_hat, H, W, w_size=11, size_average=True, full=Fals
     C2 = (0.03 * L) ** 2                                                        # c2 = (0.03 * L)^2
     v1 = 2.0 * sigma12 + C2                                                     # v1 = 2 * \sigma1 * \sigma2
     v2 = sigma1_sq + sigma2_sq + C2                                             # v2 = \sigma1^2 + \sigma2^2 + c2
-    cs = torch.mean(v1 / v2)                        # contrast sensitivity      # cs = mean(v1 / v2)     对比度比较
+    cs = torch.mean(v1 / v2)                                                    # cs = mean(v1 / v2)     对比度比较
     ssim_map = ((2 * mu1_mu2 + C1) * v1) / ((mu1_sq + mu2_sq + C1) * v2)        # 计算SSIM
     if size_average:                                                            # 如果计算均值
         ret = ssim_map.mean()                                                   # 计算SSIM均值
