@@ -7,7 +7,9 @@
     <img src="images/error404.png" alt="Logo" width="200" height="200">
   </a>
 
-  <h3 align="center">Streamable-INR</h3>
+  <font size=6, color=red>Streamable Implicit Neural Representation</font>
+
+
 
   <p align="center">
     The streamable implicit neural representation models for image compression.
@@ -23,117 +25,110 @@
   </p>
 </div>
 
-
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
 # Streamable-INR
-> The streamable model consists of sub-networks at varying scales, enabling variable bit-rates compression with a single model and conserving storage space through parameter sharing.
+> Our work explores different extension types of streamable implicit neural networks for variable bit-rate image compression. The streamable model consists of sub-networks at varying scales, enabling variable bit-rates compression with a single model and conserving storage space through parameter sharing.
 
 ![Overview of the WDSIC model architectur](images/WDSIC_overall.png)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+## Environment Configuration
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+This is an example of how you may give instructions on setting up your project locally.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+**Environment :**
+* Miniconda 3, Python 3.8 (ubuntu 18.04), Cuda 11.3
 
-Use the `BLANK_README.md` to get started.
+* Pytorch 1.9.1+cu111 (注意：必须是 1.9.1 或以下，因为使用官方提供的 torchmeta 模块依赖 1.9.1 前的 Pytorch 版本)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+* 更多环境配置信息，请查看 `requirements.txt` 文件
 
+* 最好使用 GPU 训练
+
+**Installation :**
+1. 创建 conda 环境：
+   ```py
+   conda create -n streamable-INR python=3.8
+   ```
+2. 安装相关依赖：
+   ```
+   pip install -r requirements.txt -i https://pypi.mirrors.ustc.edu.cn/simple/
+   ```
+3. 重新安装 Pytorch 模块，覆盖 torchmeta 默认安装的 Pytorch 版本：
+   ```
+   pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 -f https://download.pytorch.org/whl/torch_stable.html --no-cache-dir
+   ```
+
+**Dataset :**
+The `'data/'` directory must be in your working directory.
+
+- Download CelebA dataset from [http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html).
+
+- Download DIV2K dataset from [https://data.vision.ee.ethz.ch/cvl/DIV2K/](https://data.vision.ee.ethz.ch/cvl/DIV2K/).
+
+- Download Kodak dataset from [https://r0k.us/graphics/kodak/](https://r0k.us/graphics/kodak/).
+
+
+
+## File Structure
+```
+  ├── data: 存储训练时数据集相关信息缓存
+  │    ├── CelebA: 200000 张人脸数据集
+  │    ├── DIV2K: 1000 张自然图像超分辨率数据集
+  │    └── Kodak: 24 张自然图像数据集
+  │
+  ├── logs: 训练获取的模型，日志，图像相关信息保存
+  │     └── train_mode : 训练模式 [COIN, SW, SD, SWD]
+  │             ├── eval: 训练日志信息 [PSNR, MS-SSIM, LPIPS]
+  │             ├── imgs: 训练图像保存 [train, meta_train]
+  │             └── mods: 训练模型保存 [train, meta_train]
+  │
+  ├── plot: 根据实验结果绘制实相关图像
+  │    ├── plot_utils: 绘制图像相关函数
+  │    └── plot_imgs: 绘制图像存放路径
+  │
+  ├── cal_bpp.py: 不同可流化模型在不同模型配置下的 bpp 计算
+  ├── dataset.py: 数据读取以及预处理方法，为图片生成 coordinates 和 features
+  ├── utils.py: 训练网络过程中使用到的一些方法和工具
+  ├── metrics.py: 实现图像评估方法 [PSNR, MS-SSIM, LPIPS]
+  ├── main.py: 模型训练相关参数，模块配置
+  ├── maml.py: 对模型采用 MAML 元学习训练
+  ├── network.py: 实现 COIN 及可流化 INR 模型
+  ├── quant_entropy: 实现均匀量化及熵编码
+  └── train: 实现不同 INR 模型在不同模式下的训练
+```
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+To train a model, run : 
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+```
+python main.py [--mode cur_mode] [--state cur_state] [...]
+```
 
-### Installation
+**Configuration Description :**
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+> **mode :** 训练时所采用的模型，可选择为 [COIN (固定)，WSIC (宽度可流)，DSIC (深度可流)，WDSIC (宽度深度联合可流)] <br /><br />
+> **state :** 训练时所采用的模式，可选择为 [trian (训练)，meta (元学习)，mtrain (元学习初始化训练)，quant_entropy (训练后量化及熵编码)] <br /><br />
+> **widths，depths :** 可流化模型各阶段的宽度，深度配置 <br /><br />
+> **lr，out_lr，in_lr :** 训练时学习率，元学习外环学习率，内环学习率 <br /><br />
+> **data_path，logs_path，meta_path :** 训练数据路径，训练图像保存路径，元学习数据路径 <br /><br />
+> **epochs，out_epochs，in_epochs :** 训练周期，元学习外环周期，内环周期 <br /><br />
+> **lr_type :** 元学习中可变学习率，可选择为 [static (固定)，param (所有参数在内环中分配对应可变学习率)，step_param (所有参数在内环各周期中都分配对应的可变学习率)] . <br /><br />
+> **num_bit，std_range，is_entorpy :** 量化位宽，量化阈值，是否熵编码 <br /><br />
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+## Related Projects
+COIN : [https://github.com/EmilienDupont/coin](https://github.com/EmilienDupont/coin)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+COIN++ : [https://github.com/EmilienDupont/coinpp](https://github.com/EmilienDupont/coinpp)
 
+MetaSDF : [https://github.com/vsitzmann/metasdf](https://github.com/vsitzmann/metasdf)
 
+Bacon : [https://github.com/computational-imaging/bacon](https://github.com/computational-imaging/bacon)
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
+Streamable-nf : [https://github.com/jwcho5576/streamable_nf](https://github.com/jwcho5576/streamable_nf)
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -149,43 +144,8 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
