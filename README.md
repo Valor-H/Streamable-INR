@@ -8,7 +8,7 @@
   </a>
 
   <a href="https://github.com/hualuo321/Streamable-INR">
-    <img src="images/TITLE.png" alt="Logo" width=90% height=90%>
+    <img src="images/TITLE.png" alt="Logo" width=80% height=80%>
   </a>
 
   <p align="center">
