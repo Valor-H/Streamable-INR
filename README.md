@@ -111,14 +111,19 @@ python main.py [--mode cur_mode] [--state cur_state] [...]
 
 **Configuration Description :**
 
-> **mode :** 训练时所采用的模型，可选择为 [COIN (固定)，WSIC (宽度可流)，DSIC (深度可流)，WDSIC (宽度深度联合可流)] <br /><br />
-> **state :** 训练时所采用的模式，可选择为 [trian (训练)，meta (元学习)，mtrain (元学习初始化训练)，quant_entropy (训练后量化及熵编码)] <br /><br />
-> **widths，depths :** 可流化模型各阶段的宽度，深度配置 <br /><br />
-> **lr，out_lr，in_lr :** 训练时学习率，元学习外环学习率，内环学习率 <br /><br />
-> **data_path，logs_path，meta_path :** 训练数据路径，训练图像保存路径，元学习数据路径 <br /><br />
-> **epochs，out_epochs，in_epochs :** 训练周期，元学习外环周期，内环周期 <br /><br />
-> **lr_type :** 元学习中可变学习率，可选择为 [static (固定)，param (所有参数在内环中分配对应可变学习率)，step_param (所有参数在内环各周期中都分配对应的可变学习率)] . <br /><br />
-> **num_bit，std_range，is_entorpy :** 量化位宽，量化阈值，是否熵编码 <br /><br />
+- **mode :** 训练时所采用的模型，可选择为 [COIN (固定)，WSIC (宽度可流)，DSIC (深度可流)，WDSIC (宽度深度联合可流)] 
+
+- **state :** 训练时所采用的模式，可选择为 [trian (训练)，meta (元学习)，mtrain (元学习初始化训练)，quant_entropy (训练后量化及熵编码)] 
+
+- **widths，depths :** 可流化模型各阶段的宽度，深度配置 
+
+- **lr，out_lr，in_lr :** 训练时学习率，元学习外环学习率，内环学习率
+
+- **data_path，logs_path，meta_path :** 训练数据路径，训练图像保存路径，元学习数据路径
+
+- **epochs，out_epochs，in_epochs :** 训练周期，元学习外环周期，内环周期 
+- **lr_type :** 元学习中可变学习率，可选择为 [static (固定)，param (所有参数在内环中分配对应可变学习率)，step_param (所有参数在内环各周期中都分配对应的可变学习率)] 
+- **num_bit，std_range，is_entorpy :** 量化位宽，量化阈值，是否熵编码 
 
 ## Related Projects
 COIN : [https://github.com/EmilienDupont/coin](https://github.com/EmilienDupont/coin)
