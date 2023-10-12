@@ -7,10 +7,12 @@
     <img src="images/error404.png" alt="Logo" width="200" height="200">
   </a>
 
- <p align="center"> <font size=6, color=red>Streamable Implicit Neural Representation</font> </p>
+  <a href="https://github.com/hualuo321/Streamable-INR">
+    <img src="images/TITLE.png" alt="Logo" width=90% height=90%>
+  </a>
 
   <p align="center">
-    The streamable implicit neural representation models for image compression.
+    The streamable implicit neural representations for image compression.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
