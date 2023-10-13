@@ -95,3 +95,4 @@ if __name__=="__main__":
     ## 放于 train.py 中运行，主要借用一下传入的 args
     # for i in range(3):
     #     et_res(args, a[i], b[i], args.img_name)
+    

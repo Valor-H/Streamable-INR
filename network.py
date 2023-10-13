@@ -244,3 +244,4 @@ def init_bias(B, w0=1.0):
     fan_in = B.shape[0]
     u = 1 / np.sqrt(fan_in) / w0
     nn.init.uniform_(B, -u, u)
+    

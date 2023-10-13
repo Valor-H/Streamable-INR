@@ -59,3 +59,4 @@ if __name__=="__main__":
     elif args.mode in ["swd"]:
         for idx in range(0, len(args.widths)):
             trainer.swd_train(idx)
+            
