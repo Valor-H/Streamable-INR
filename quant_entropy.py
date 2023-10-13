@@ -4,7 +4,6 @@ from torch.nn.parameter import Parameter
 class Quentizer():
     def __init__(self, args):
         self.args = args
-        self.mean_wi, self.mean_bi, self.std_wi, self.std_bi = 0, 0, 0, 0
         self.mean_wh, self.mean_bh, self.std_wh, self.std_bh = 0, 0, 0, 0
         self.mean_wo, self.mean_bo, self.std_wo, self.std_bo = 0, 0, 0, 0
         self.is_entropy = args.is_entropy
@@ -34,19 +33,6 @@ class Quentizer():
         
         elif self.args.mode in ["sd", "swd"]:
             all_param = torch.tensor([])
-            for i, layer in enumerate(net.in_net):
-                weight = layer[0].weight
-                norm_weight = (weight - self.mean_wi[i]) / self.std_wi[i]
-                norm_weight = torch.clamp(norm_weight, -self.args.std_range, self.args.std_range)
-                norm_weight = norm_weight / (2 * self.args.std_range) + 0.5
-                num_byte = 2**num_bit
-                quantized_weight = torch.round(norm_weight * (num_byte - 1))
-                if self.is_entropy:
-                    all_param = torch.cat([all_param.int(), quantized_weight.to("cpu").int().view(-1)])
-                dequantized_norm_weight = quantized_weight / (num_byte - 1)
-                dequantized_norm_weight = (dequantized_norm_weight - 0.5) * 2 * self.args.std_range
-                dequantized_weight = dequantized_norm_weight * self.std_wi[i] + self.mean_wi[i]
-                layer[0].weight = Parameter(dequantized_weight)
             for i, layer in enumerate(net.hid_net):
                 weight = layer[0].weight
                 norm_weight = (weight - self.mean_wh[i]) / self.std_wh[i]
@@ -103,12 +89,6 @@ class Quentizer():
             self.std_wh = std_wh
             self.std_bh = std_bh
         elif self.args.mode in ["sd", "swd"]:
-            mean_wi, mean_bi, std_wi, std_bi = [], [], [], []
-            for layer in net.in_net:
-                mean_wi.append(layer[0].weight.mean().item())
-                mean_bi.append(layer[0].bias.mean().item())
-                std_wi.append(layer[0].weight.std().item())
-                std_bi.append(layer[0].bias.std().item())
             mean_wh, mean_bh, std_wh, std_bh = [], [], [], []
             for layer in net.hid_net:
                 mean_wh.append(layer[0].weight.mean().item())
@@ -121,10 +101,6 @@ class Quentizer():
                 mean_bo.append(layer[0].bias.mean().item())
                 std_wo.append(layer[0].weight.std().item())
                 std_bo.append(layer[0].bias.std().item())
-            self.mean_wi = mean_wi
-            self.mean_bi = mean_bi
-            self.std_wi = std_wi
-            self.std_bi = std_bi
             self.mean_wh = mean_wh
             self.mean_bh = mean_bh
             self.std_wh = std_wh
