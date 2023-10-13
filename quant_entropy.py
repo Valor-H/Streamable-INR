@@ -110,3 +110,6 @@ class Quentizer():
             self.std_wo = std_wo
             self.std_bo = std_bo
         
+
+        
+        
