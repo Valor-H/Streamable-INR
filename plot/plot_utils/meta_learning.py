@@ -9,7 +9,6 @@ mk_1, mk_2, mk_3, mk_4 = "o", "v", "*", "D"
 pt_1, pt_2, pt_3, pt_4 = ':', '--', '-', '-.'
 co_1, co_2, co_3, co_4, co_5 = mc.TABLEAU_COLORS['tab:blue'], mc.TABLEAU_COLORS['tab:orange'], mc.TABLEAU_COLORS['tab:green'], mc.TABLEAU_COLORS['tab:red'],  mc.TABLEAU_COLORS['tab:pink']
 
-
 fig, ax = plt.subplots(3, 1, figsize=(8, 6))
 ## CLEBA 小数据集
 e_1 = np.arange(100, 30001, 100)

@@ -10,6 +10,7 @@ pt_1, pt_2, pt_3, pt_4 = ':', '--', '-', '-.'
 co_1, co_2, co_3, co_4, co_5, co_6, co_7 = mc.TABLEAU_COLORS['tab:blue'], mc.TABLEAU_COLORS['tab:orange'], mc.TABLEAU_COLORS['tab:green'], mc.TABLEAU_COLORS['tab:red'],  mc.TABLEAU_COLORS['tab:pink'], mc.TABLEAU_COLORS['tab:gray'], mc.TABLEAU_COLORS['tab:olive']
 co_8 = mc.BASE_COLORS['c']
 
+
 fig, ax = plt.subplots(1, 2, figsize=(18, 5))
 #############################################
 bits = [8, 9, 10, 11, 12, 13, 14, 15, 16]

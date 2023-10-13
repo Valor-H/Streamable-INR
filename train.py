@@ -453,4 +453,3 @@ class ImageTrainer():
             cur_net.load_state_dict(torch.load(os.path.join(self.mods_train_path, f"{name}_w{c_width}d{c_depth}.pth")))
             cur_net(coord, c_depth, param_list=param_list)
             print("花费时间", time.time() - start_time)
-            

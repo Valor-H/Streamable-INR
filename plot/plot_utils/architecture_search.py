@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mc
 import numpy as np
 
+
 lw_1, lw_2, lw_3, lw_4 = 1, 1.25, 1.5, 1.75
 ms_1, ms_2, ms_3, ms_4 = 1, 1.25, 1.5, 2
 mk_1, mk_2, mk_3, mk_4 = "o", "v", "*", "D"

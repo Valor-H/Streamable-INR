@@ -16,6 +16,7 @@ def long_img(imgs_path):
         images.append(image)
     print(images)
 
+    
     # 单幅图像尺寸
     width, height = images[0].size
     width, height = images[0].resize(cur_shape).size

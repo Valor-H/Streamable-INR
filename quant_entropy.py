@@ -109,4 +109,3 @@ class Quentizer():
             self.mean_bo = mean_bo
             self.std_wo = std_wo
             self.std_bo = std_bo
-        

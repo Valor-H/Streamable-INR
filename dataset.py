@@ -73,5 +73,3 @@ if __name__=="__main__":
         print(i, coord.shape, feature.shape, name, H, W)
         feature = feature.permute(1, 0).reshape(-1, H, W)
         torchvision.utils.save_image(feature, os.path.join("./temp/", f'{name}.png'))
-    
-    

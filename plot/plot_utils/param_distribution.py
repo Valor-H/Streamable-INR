@@ -11,6 +11,7 @@ co_1, co_2, co_3, co_4, co_5 = mc.TABLEAU_COLORS['tab:blue'], mc.TABLEAU_COLORS[
 
 fig, ax = plt.subplots(2, 1, figsize=(8, 5))
 
+
 ## CLEBA 小数据集
 e_1 = np.arange(100, 50001, 100)
 e_2 = np.arange(100, 50001, 100)
