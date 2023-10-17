@@ -92,8 +92,8 @@ The `'data/'` directory must be in your working directory.
   ├── main.py: 模型训练相关参数，模块配置
   ├── maml.py: 对模型采用 MAML 元学习训练
   ├── network.py: 实现 COIN 及可流化 INR 模型
-  ├── quant_entropy: 实现均匀量化及熵编码
-  └── train: 实现不同 INR 模型在不同模式下的训练
+  ├── quant_entropy.py: 实现均匀量化及熵编码
+  └── train.py: 实现不同 INR 模型在不同模式下的训练
 ```
 
 <!-- GETTING STARTED -->
