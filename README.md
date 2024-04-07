@@ -6,9 +6,6 @@
   <a href="https://github.com/hualuo321/Streamable-INR">
     <img src="images/error404.png" alt="Logo" width="180" height="180">
   </a>
-  <a href="https://github.com/hualuo321/Streamable-INR">
-    <img src="images/TITLE.png" alt="Logo" width=90% height=90%>
-  </a>
   <p align="center">
     The streamable implicit neural representations for image compression.
     <br />
