@@ -6,25 +6,11 @@
   <a href="https://github.com/hualuo321/Streamable-INR">
     <img src="images/error404.png" alt="Logo" width="180" height="180">
   </a>
-  <p align="center">
-    The streamable implicit neural representations for image compression.
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
-  </p>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 # Streamable-INR
 > Our work explores different extension types of streamable implicit neural networks for variable bit-rate image compression. The streamable model consists of sub-networks at varying scales, enabling variable bit-rates compression with a single model and conserving storage space through parameter sharing.
-
-![Overview of the WDSIC model architectur](images/WDSIC_overall.png)
 
 ## Environment Configuration
 
